@@ -8,9 +8,9 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Аккаунт {username} был успешно создан!')
+            messages.success(request, f'Аккаунт для {username} успешно создан! Теперь вы можете войти.')
             return redirect('login')
-        else:
-            form = UserCreationForm()
-            return render(request, 'myapp/articles/register.html',{'form':form})
+    else:
+        form = UserCreationForm()
     
+    return render(request, 'myapp/register.html', {'form': form})
