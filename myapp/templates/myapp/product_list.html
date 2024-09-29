@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Список товаров</h2>
+
+{% for product in products %}
+<div>
+    <h3>{{ product.name }}</h3>
+    <p>Цена: {{ product.price }} руб.</p>
+    <p>В наличии: {{ product.stock_quantity }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}" />
+        <label for="quantity">Количество:</label>
+        <input
+            type="number"
+            name="quantity"
+            min="1"
+            max="{{ product.stock_quantity }}"
+            required />
+        <button type="submit">Купить</button>
+    </form>
+</div>
+{% endfor %} {% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} {% endblock %}
