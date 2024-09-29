@@ -1,13 +1,3 @@
-You can choose to enable a more compact line height from the view settings menu.
-db.sqlite3 Binary file not shown. myapp/forms.py +18 Original file line number
-Diff line number Diff line change from django import forms from
-django.contrib.auth.models import User from .models import Product, Return class
-UserRegistrationForm(forms.ModelForm): class Meta: model = User fields =
-['username', 'password'] class ProductForm(forms.ModelForm): class Meta: model =
-Product fields = ['name', 'price', 'stock'] class ReturnForm(forms.ModelForm):
-class Meta: model = Return fields = ['product', 'reason']
-myapp/templates/myapp/login.html +18 Original file line number Diff line number
-Diff line change
 <!DOCTYPE html>
 <html lang="en">
     <head>
