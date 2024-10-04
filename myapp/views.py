@@ -13,7 +13,8 @@ def product_list(request):
     products = Product.objects.all() 
     return render(request, 'product_list.html', {'products': products})
 
-# Представление для регистрации
+
+    # Педставление для регистрации
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -22,9 +23,9 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Аккаунт для {username} успешно создан! Теперь вы можете войти.')
 
-            # После создания аккаунта, логиним пользователя и перенаправляем на главную
+            
             login(request, user)
-            return redirect('index')  # Перенаправление на главную страницу
+            return redirect('index')  
     else:
         form = UserCreationForm()
 
